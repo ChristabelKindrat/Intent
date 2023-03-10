@@ -1,0 +1,150 @@
+$header_font_family: 'Pacifico', sans-serif;
+$text_font_family: 'Quicksand', sans-serif;
+
+body {
+  background: #FFF6EB;
+}
+
+.main_wrap{
+  grid-gap: 15px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 320px 10px 150px;
+
+  img{
+    width: 400px;
+    transform: rotate(-10deg);
+    background: #FFDDE4;
+    border-radius: 35% 50% 30% 50%;
+  }
+
+  &__text {
+    color: #A39FE1;
+    font-family: $header_font_family;
+    font-size: 60px;
+
+    span {
+      color: #DEB3E0;
+      font-size: 40px;
+    }
+  }
+}
+
+.content {
+  font-family: $text_font_family;
+  display: flex;
+  grid-gap: 20px;
+
+  &__projects {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 0;
+    width: 700px;
+    background: #7289ad;
+    border-radius: 22% 24% 23% 22%;;
+    list-style-type: none;
+
+    li {
+      padding: 10px;
+      margin: 30px 30px;
+      color: #FFF6EB;
+      text-align: center;
+    }
+    span{
+      color: #355fb7;
+      font-size: 19px;
+    }
+  }
+
+  &__projects:hover{
+    background: #88a4ce;
+  }
+
+  &__links {
+    box-sizing: border-box;
+    padding: 20px;
+    width: 340px;
+    height: max-content;
+    background: #9CDAF35E;
+    list-style-type: none;
+    font-size: 10px;
+    border-radius: 35% 40% 25% 25%;
+    color: #254e80;
+
+    li{
+      padding: 10px;
+
+      a{
+        text-decoration: none;
+      }
+    }
+    span{
+      font-size: 15px;
+    }
+  }
+
+  &__links:hover{
+    background: #709AAB5E;
+  }
+
+
+
+  &__about {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-end;
+    box-sizing: border-box;
+    width: 600px;
+    background: #FEECD6;
+    border-radius: 110% 105% 105% 66%;
+    position: relative;
+    padding: 30px;
+
+    img {
+      position: absolute;
+      width: 300px;
+      top: -295px;
+      right: 0;
+      border-radius: 70% 110% 60% 40%;
+    }
+
+    p{
+      padding: 20px;
+    }
+
+    span{
+      color: rgba(15, 127, 159, 0.37);
+    }
+  }
+
+  &__about:hover{
+    background: #d3b392;
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 110px;
+  font-family: $text_font_family;
+
+  a {
+    background: #FFDDE4;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 47% 40% 45% 49%;
+  }
+
+  a:hover{
+    background: #DEB3E0;
+  }
+}

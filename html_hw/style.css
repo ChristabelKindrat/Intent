@@ -1,0 +1,130 @@
+body {
+  background: #FFF6EB;
+}
+
+.main_wrap {
+  grid-gap: 15px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 320px 10px 150px;
+}
+.header img {
+  width: 400px;
+  transform: rotate(-10deg);
+  background: #FFDDE4;
+  border-radius: 35% 50% 30% 50%;
+}
+.header__text {
+  color: #A39FE1;
+  font-family: "Pacifico", sans-serif;
+  font-size: 60px;
+}
+.header__text span {
+  color: #DEB3E0;
+  font-size: 40px;
+}
+
+.content {
+  font-family: "Quicksand", sans-serif;
+  display: flex;
+  grid-gap: 20px;
+}
+.content__projects {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 0;
+  width: 700px;
+  background: #7289ad;
+  border-radius: 22% 24% 23% 22%;
+  list-style-type: none;
+}
+.content__projects li {
+  padding: 10px;
+  margin: 30px 30px;
+  color: #FFF6EB;
+  text-align: center;
+}
+.content__projects span {
+  color: #355fb7;
+  font-size: 19px;
+}
+.content__projects:hover {
+  background: #88a4ce;
+}
+.content__links {
+  box-sizing: border-box;
+  padding: 20px;
+  width: 340px;
+  height: max-content;
+  background: rgba(156, 218, 243, 0.368627451);
+  list-style-type: none;
+  font-size: 10px;
+  border-radius: 35% 40% 25% 25%;
+  color: #254e80;
+}
+.content__links li {
+  padding: 10px;
+}
+.content__links li a {
+  text-decoration: none;
+}
+.content__links span {
+  font-size: 15px;
+}
+.content__links:hover {
+  background: rgba(112, 154, 171, 0.368627451);
+}
+.content__about {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-end;
+  box-sizing: border-box;
+  width: 600px;
+  background: #FEECD6;
+  border-radius: 110% 105% 105% 66%;
+  position: relative;
+  padding: 30px;
+}
+.content__about img {
+  position: absolute;
+  width: 300px;
+  top: -295px;
+  right: 0;
+  border-radius: 70% 110% 60% 40%;
+}
+.content__about p {
+  padding: 20px;
+}
+.content__about span {
+  color: rgba(15, 127, 159, 0.37);
+}
+.content__about:hover {
+  background: #d3b392;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 110px;
+  font-family: "Quicksand", sans-serif;
+}
+.footer a {
+  background: #FFDDE4;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 47% 40% 45% 49%;
+}
+.footer a:hover {
+  background: #DEB3E0;
+}
+
+/*# sourceMappingURL=style.css.map */
