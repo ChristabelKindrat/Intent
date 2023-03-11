@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico|Quicksand">
+</head>
+<body>
+<div class="wrap">
+  <div class="header">
+      <div>
+      <img class="header__img" src="./svg/octocat.svg" alt="img">
+      <div class="header__user_info"> Name </div>
+      </div>
+      <h3 class="header__git_info"> GitHub users search App</h3>
+  </div>
+  <div class="content">
+      <form name="search" class="content__search">
+          <label>
+              <input class="content__input" type="text" name="nickname" placeholder="Write a user nickname to search:">
+              <button class="content__button">Submit</button>
+          </label>
+      </form>
+      <div class="content__information">
+          <div class="content__loader" style="display: none"></div>
+      </div>
+  </div>
+</div>
+<script src="main.js"></script>
+</body>
+</html>
