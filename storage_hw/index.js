@@ -4,21 +4,42 @@ const dynamic_wrap = document.createElement('div');
 dynamic_wrap.classList.add('dynamic_wrap');
 root_div.appendChild(dynamic_wrap);
 
-window.addEventListener('popstate', function(event) {
+//Event will be work when user clicked on arrow back/forward
+window.addEventListener('popstate', function (event) {
     if (event.state && event.state.action === 'edit') {
         editFilm(event.state.movie);
-    }else if(event.state && event.state.action === 'preview') {
+    } else if (event.state && event.state.action === 'preview') {
         showDetails(event.state.movie);
-    }else if(event.state && event.state.action === 'add') {
+    } else if (event.state && event.state.action === 'add') {
         addFilm();
-    }else{
+    } else {
+        dynamic_wrap.innerHTML = '';
+    }
+});
+
+//Event will be work when user change url hash manually
+window.addEventListener('hashchange', function () {
+    if (location.hash === '#edit') {
+        let filmId = location.search.substring(4, location.search.length);
+        let film = initialFilms.find((film) => film.id === filmId);
+        editFilm(film);
+
+    } else if (location.hash === '#preview') {
+        let filmId = location.search.substring(4, location.search.length);
+        let film = initialFilms.find((film) => film.id === filmId);
+        showDetails(film);
+
+    } else if (location.hash === '#add') {
+        addFilm();
+
+    } else {
         dynamic_wrap.innerHTML = '';
     }
 });
 
 //The function that works when you click on button 'Edit'
 function editFilm(film) {
-    history.pushState({action: 'edit', movie : film}, null, `?id=${film.id}#edit`);
+    history.pushState({action: 'edit', movie: film}, null, `?id=${film.id}#edit`);
     dynamic_wrap.innerHTML = '';
 
     let form_edit = document.createElement("form");
@@ -28,7 +49,7 @@ function editFilm(film) {
     title_edit.placeholder = `Write Title to change : ${film.title}`;
     title_edit.setAttribute('type', 'text');
     title_edit.setAttribute('required', 'true');
-    title_edit.addEventListener("keydown", function(event) {
+    title_edit.addEventListener("keydown", function (event) {
         if (event.key === "Enter") {
             event.preventDefault();
             category_edit.focus();
@@ -39,7 +60,7 @@ function editFilm(film) {
     category_edit.placeholder = `Write Category of film to change : ${film.category}`;
     category_edit.setAttribute('type', 'text');
     category_edit.setAttribute('required', 'true');
-    category_edit.addEventListener("keydown", function(event) {
+    category_edit.addEventListener("keydown", function (event) {
         if (event.key === "Enter") {
             event.preventDefault();
             img_url_edit.focus();
@@ -50,7 +71,7 @@ function editFilm(film) {
     img_url_edit.placeholder = 'Write image of film to change :';
     img_url_edit.setAttribute('type', 'text');
     img_url_edit.setAttribute('required', 'true');
-    img_url_edit.addEventListener("keydown", function(event) {
+    img_url_edit.addEventListener("keydown", function (event) {
         if (event.key === "Enter") {
             event.preventDefault();
             plot_edit.focus();
@@ -61,7 +82,7 @@ function editFilm(film) {
     plot_edit.placeholder = 'Write plot about film :';
     plot_edit.setAttribute('type', 'text');
     plot_edit.setAttribute('required', 'true');
-    plot_edit.addEventListener("keydown", function(event) {
+    plot_edit.addEventListener("keydown", function (event) {
         if (event.key === "Enter") {
             event.preventDefault();
             button_save.focus();
@@ -134,7 +155,7 @@ function editFilm(film) {
 
 //The function that works when you click on title of movie
 function showDetails(film) {
-    history.pushState({action: 'show', movie : film}, null, `?id=${film.id}#preview`);
+    history.pushState({action: 'show', movie: film}, null, `?id=${film.id}#preview`);
     dynamic_wrap.innerHTML = '';
 
     const wrap_div = document.createElement('div');
@@ -158,7 +179,7 @@ function showDetails(film) {
 
 //The function that works when you click on button 'Add'
 function addFilm() {
-    history.pushState({action: 'edit', movieArr: initialFilms }, null, 'index.html#add');
+    history.pushState({action: 'edit', movieArr: initialFilms}, null, 'index.html#add');
     dynamic_wrap.innerHTML = '';
 
     let form_add = document.createElement("form");
@@ -168,7 +189,7 @@ function addFilm() {
     title_add.placeholder = "Film title:";
     title_add.setAttribute('type', 'text');
     title_add.setAttribute('required', 'true');
-    title_add.addEventListener("keydown", function(event) {
+    title_add.addEventListener("keydown", function (event) {
         if (event.key === "Enter") {
             event.preventDefault();
             category_add.focus();
@@ -179,7 +200,7 @@ function addFilm() {
     category_add.placeholder = "Film category:";
     category_add.setAttribute('type', 'text');
     category_add.setAttribute('required', 'true');
-    category_add.addEventListener("keydown", function(event) {
+    category_add.addEventListener("keydown", function (event) {
         if (event.key === "Enter") {
             event.preventDefault();
             img_url_add.focus();
@@ -190,7 +211,7 @@ function addFilm() {
     img_url_add.placeholder = "Image ung to film:";
     img_url_add.setAttribute('type', 'text');
     img_url_add.setAttribute('required', 'true');
-    img_url_add.addEventListener("keydown", function(event) {
+    img_url_add.addEventListener("keydown", function (event) {
         if (event.key === "Enter") {
             event.preventDefault();
             plot_add.focus();
@@ -201,10 +222,10 @@ function addFilm() {
     plot_add.placeholder = "Write plot about film:";
     plot_add.setAttribute('type', 'text');
     plot_add.setAttribute('required', 'true');
-    plot_add.addEventListener("keydown", function(event) {
+    plot_add.addEventListener("keydown", function (event) {
         if (event.key === "Enter") {
             event.preventDefault();
-           button_add.focus();
+            button_add.focus();
         }
     });
 
