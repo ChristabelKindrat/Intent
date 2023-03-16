@@ -110,7 +110,11 @@ function editFilm(film) {
         plot_edit.value = '';
 
         localStorage.setItem('films', JSON.stringify(initialFilms));
+
         showDetails(film);
+        films_render.innerHTML = '';
+        filmsList(initialFilms);
+
 
         const modal_edit_save = document.createElement('div');
         const close_modal_edit_save = document.createElement('button');
@@ -249,6 +253,8 @@ function addFilm() {
         };
         initialFilms.push(obj);
         localStorage.setItem('films', JSON.stringify(initialFilms));
+        films_render.innerHTML = '';
+        filmsList(initialFilms);
         showDetails(obj);
 
         title_add.value = '';

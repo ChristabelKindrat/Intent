@@ -28,31 +28,39 @@ const static_part_wrap = document.createElement('div');
 static_part_wrap.classList.add('static_part_wrap');
 root_element.appendChild(static_part_wrap);
 
+//create wrap div for films list
+const films_render =document.createElement('div');
+films_render.classList.add('films_render_wrap');
+static_part_wrap.appendChild(films_render);
 
-initialFilms.forEach((film, id) => {
-    const film_element = document.createElement('div');
-    film_element.classList.add('film_element');
+//this functions render films on static part of website
+filmsList(initialFilms);
+function filmsList(arr) {
+    arr.forEach((film, id) => {
+        const film_element = document.createElement('div');
+        film_element.classList.add('film_element');
 
-    const name = document.createElement('h2');
-    name.textContent = film.title;
-    film_element.appendChild(name);
+        const name = document.createElement('h2');
+        name.textContent = film.title;
+        film_element.appendChild(name);
 
-    const edit_button = document.createElement('button');
-    edit_button.textContent = 'Edit';
-    film_element.appendChild(edit_button);
+        const edit_button = document.createElement('button');
+        edit_button.textContent = 'Edit';
+        film_element.appendChild(edit_button);
 
-    edit_button.addEventListener("click", (e) => {
-        e.preventDefault();
-        editFilm(film);
+        edit_button.addEventListener("click", (e) => {
+            e.preventDefault();
+            editFilm(film);
+        });
+
+        name.addEventListener("click", (e) => {
+            e.preventDefault();
+            showDetails(film);
+        });
+
+        films_render.appendChild(film_element);
     });
-
-    name.addEventListener("click", (e) => {
-        e.preventDefault();
-        showDetails(film);
-    });
-
-    static_part_wrap.appendChild(film_element);
-});
+}
 
 //add button to add films
 const add_button = document.createElement('button');
