@@ -4,9 +4,22 @@ const dynamic_wrap = document.createElement('div');
 dynamic_wrap.classList.add('dynamic_wrap');
 root_div.appendChild(dynamic_wrap);
 
+window.addEventListener('popstate', function(event) {
+    if (event.state && event.state.action === 'edit') {
+        editFilm(event.state.movie);
+    }else if(event.state && event.state.action === 'preview') {
+        showDetails(event.state.movie);
+    }else if(event.state && event.state.action === 'add') {
+        addFilm();
+    }else{
+        dynamic_wrap.innerHTML = '';
+    }
+});
+
 //The function that works when you click on button 'Edit'
 function editFilm(film) {
-    history.pushState('http://localhost:63342/Intent/storage_hw/index.html', 'show film', `?id=${film.id}#edit`);
+    history.pushState({action: 'edit', movie : film}, null, `?id=${film.id}#edit`);
+    dynamic_wrap.innerHTML = '';
 
     let form_edit = document.createElement("form");
     form_edit.setAttribute('id', 'edit');
@@ -15,21 +28,45 @@ function editFilm(film) {
     title_edit.placeholder = `Write Title to change : ${film.title}`;
     title_edit.setAttribute('type', 'text');
     title_edit.setAttribute('required', 'true');
+    title_edit.addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            category_edit.focus();
+        }
+    });
 
     let category_edit = document.createElement("input");
     category_edit.placeholder = `Write Category of film to change : ${film.category}`;
     category_edit.setAttribute('type', 'text');
     category_edit.setAttribute('required', 'true');
+    category_edit.addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            img_url_edit.focus();
+        }
+    });
 
     let img_url_edit = document.createElement("input");
     img_url_edit.placeholder = 'Write image of film to change :';
     img_url_edit.setAttribute('type', 'text');
     img_url_edit.setAttribute('required', 'true');
+    img_url_edit.addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            plot_edit.focus();
+        }
+    });
 
     let plot_edit = document.createElement("input");
     plot_edit.placeholder = 'Write plot about film :';
     plot_edit.setAttribute('type', 'text');
     plot_edit.setAttribute('required', 'true');
+    plot_edit.addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            button_save.focus();
+        }
+    });
 
     let button_save = document.createElement('button');
     button_save.innerText = 'save changes';
@@ -97,7 +134,8 @@ function editFilm(film) {
 
 //The function that works when you click on title of movie
 function showDetails(film) {
-    history.pushState('http://localhost:63342/Intent/storage_hw/index.html', 'show film', `?id=${film.id}#preview`);
+    history.pushState({action: 'show', movie : film}, null, `?id=${film.id}#preview`);
+    dynamic_wrap.innerHTML = '';
 
     const wrap_div = document.createElement('div');
     wrap_div.setAttribute('id', 'show');
@@ -120,7 +158,8 @@ function showDetails(film) {
 
 //The function that works when you click on button 'Add'
 function addFilm() {
-    history.pushState('http://localhost:63342/Intent/storage_hw/index.html', 'show film', '#add');
+    history.pushState({action: 'edit', movieArr: initialFilms }, null, 'index.html#add');
+    dynamic_wrap.innerHTML = '';
 
     let form_add = document.createElement("form");
     form_add.setAttribute('id', 'add');
@@ -129,21 +168,45 @@ function addFilm() {
     title_add.placeholder = "Film title:";
     title_add.setAttribute('type', 'text');
     title_add.setAttribute('required', 'true');
+    title_add.addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            category_add.focus();
+        }
+    });
 
     let category_add = document.createElement("input");
     category_add.placeholder = "Film category:";
     category_add.setAttribute('type', 'text');
     category_add.setAttribute('required', 'true');
+    category_add.addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            img_url_add.focus();
+        }
+    });
 
     let img_url_add = document.createElement("input");
     img_url_add.placeholder = "Image ung to film:";
     img_url_add.setAttribute('type', 'text');
     img_url_add.setAttribute('required', 'true');
+    img_url_add.addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            plot_add.focus();
+        }
+    });
 
     let plot_add = document.createElement("input");
     plot_add.placeholder = "Write plot about film:";
     plot_add.setAttribute('type', 'text');
     plot_add.setAttribute('required', 'true');
+    plot_add.addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+           button_add.focus();
+        }
+    });
 
     let button_add = document.createElement('button');
     button_add.innerText = 'add film';
@@ -212,24 +275,6 @@ function addFilm() {
     }
 }
 
-// window.addEventListener("hashchange", function () {
-//     const hash = window.location.hash;
-//     const search = window.location.search;
-//
-//     if (hash === "#edit") {
-//
-//     } else if (hash === "#add") {
-//
-//     } else if (hash === "#preview") {
-//
-//     } else {
-//         window.location.assign('http://localhost:63342/Intent/storage_hw/index.html');
-//     }
-// });
-
-// window.addEventListener('popstate', (event) => {
-//
-// });
 
 
 

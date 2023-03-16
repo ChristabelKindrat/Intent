@@ -28,10 +28,8 @@ const static_part_wrap = document.createElement('div');
 static_part_wrap.classList.add('static_part_wrap');
 root_element.appendChild(static_part_wrap);
 
-const films = JSON.parse(localStorage.getItem('films'));
-const values = films || initialFilms;
 
-values.forEach((film, id) => {
+initialFilms.forEach((film, id) => {
     const film_element = document.createElement('div');
     film_element.classList.add('film_element');
 
