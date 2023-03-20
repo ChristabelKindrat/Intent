@@ -115,7 +115,6 @@ function editFilm(film) {
         films_render.innerHTML = '';
         filmsList(initialFilms);
 
-
         const modal_edit_save = document.createElement('div');
         const close_modal_edit_save = document.createElement('button');
 
@@ -133,7 +132,6 @@ function editFilm(film) {
     }
 
     button_cancel.onclick = function (ev) {
-
         const modal_edit_cancel = document.createElement('div');
         const close_modal_edit_cancel = document.createElement('button');
         const stay_modal_edit_cancel = document.createElement('button');
